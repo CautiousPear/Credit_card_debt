@@ -4,12 +4,12 @@ public class LabProgram {
 
    public static void main(String [] args) {
       Scanner scnr = new Scanner(System.in);
-      int usSize, usNameCount, usDebtCount, usDebtFree;
-      int stSize, stNameCount, stDebtCount, stDebtFree;
+      int usSize, usNameCount, usDebtCount, usDebtFree; //Overall variables
+      int stSize, stNameCount, stDebtCount, stDebtFree; //State variabvles
       int debtMin;
       double usHighestDebt;
       double stHighestDebt;
-      int i, j;
+      int i;
       usNameCount = 0;
       usDebtCount = 0;
       usDebtFree  = 0;
@@ -45,14 +45,14 @@ public class LabProgram {
         if (debt[i] > debtMin) usDebtCount++;
         if (names[i].toUpperCase().startsWith(nameSearch.toUpperCase())) usNameCount++;
       }
-      
+      // Print overall U.S. report
       System.out.printf("U.S. Report\nCustomers: %d\nHighest debt: %s\nCustomer names that start with \"%s\": %d\nCustomers with debt over $%d: %d\nCustomers debt free: %d\n", usSize, usHighestDebtName, nameSearch, usNameCount, debtMin, usDebtCount, usDebtFree);
       System.out.println();
 
       stHighestDebt = -1;
       stHighestDebtName = "";
       for (i = 0; i < debt.length; i++) {
-        if(states[i].equals(stateSuffix)) {
+        if(states[i].equals(stateSuffix)) { //Only entries with same state suffix
             stSize++;
             if (debt[i] > stHighestDebt) {
                 stHighestDebt = debt[i];
@@ -63,6 +63,7 @@ public class LabProgram {
             if (names[i].toUpperCase().startsWith(nameSearch.toUpperCase())) stNameCount++;
         }
       }
+      //Print input state report
       System.out.printf("%s Report\nCustomers: %d\nHighest debt: %s\nCustomer names that start with \"%s\": %d\nCustomers with debt over $%d: %d\nCustomers debt free: %d\n", stateSuffix, stSize, stHighestDebtName, nameSearch, stNameCount, debtMin, stDebtCount, stDebtFree);
       
    }    
